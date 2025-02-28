@@ -10,7 +10,7 @@ public class FilterConfig {
 
     @Bean
     public FilterRegistrationBean<LoggingFilter> loggingFilter() {
-        FilterRegistrationBean<LoggingFilter> registrationBean = new FilterRegistrationBean<>();
+        FilterRegistrationBean<LoggingFilter> registrationBean = new FilterRegistrationBean();
 
         // 设置自定义的Filter
         registrationBean.setFilter(new LoggingFilter());

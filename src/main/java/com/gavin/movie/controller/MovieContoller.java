@@ -2,8 +2,6 @@ package com.gavin.movie.controller;
 
 import com.gavin.movie.domain.Movie;
 import com.gavin.movie.service.IMovieService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

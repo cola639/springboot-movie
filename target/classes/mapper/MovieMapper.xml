@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.gavin.springmovie.mapper.MovieMapper">
-    <resultMap id="directorResult" type="com.gavin.springmovie.domain.Director">
+<mapper namespace="com.gavin.movie.mapper.MovieMapper">
+    <resultMap id="directorResult" type="com.gavin.movie.domain.Director">
         <id column="director_id" property="directorId"/>
         <result column="director_name" property="directorName"/>
     </resultMap>
 
-    <resultMap id="movieResult" type="com.gavin.springmovie.domain.Movie">
+    <resultMap id="movieResult" type="com.gavin.movie.domain.Movie">
         <id column="movie_id" property="movieId"/>
         <result column="movie_name" property="movieName"/>
         <result column="movie_description" property="movieDescription"/>
@@ -29,7 +29,7 @@
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="remarks" property="remarks"/>
-        <association property="director" column="movie_director_id" javaType="com.gavin.springmovie.domain.Director"
+        <association property="director" column="movie_director_id" javaType="com.gavin.movie.domain.Director"
                      resultMap="directorResult"/>
     </resultMap>
 
@@ -41,7 +41,7 @@
         create_time, update_time, remarks
     </sql>
 
-    <insert id="insertMovie" parameterType="Movie" useGeneratedKeys="true" keyProperty="movieId">
+    <insert id="insertMovie" parameterType="com.gavin.movie.domain.Movie" useGeneratedKeys="true" keyProperty="movieId">
         insert into movies(
         <if test="movieName != null and movieName != ''">movie_name</if>
         )values(
@@ -59,7 +59,7 @@
         order by movie_score desc
     </select>
 
-    <select id="selectMovieList" parameterType="movie" resultMap="movieResult">
+    <select id="selectMovieList" parameterType="com.gavin.movie.domain.Movie" resultMap="movieResult">
         select
         <include refid="basicColumn"/>
         from movies
